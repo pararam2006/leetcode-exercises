@@ -1,3 +1,5 @@
+package string
+
 fun strStr(haystack: String, needle: String): Int {
     var res = -1
     var i = 0
