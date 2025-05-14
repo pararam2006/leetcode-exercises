@@ -1,9 +1,8 @@
 package sorting
 
 fun containsDuplicate(nums: IntArray): Boolean {
-    var numsSet = mutableSetOf<Int>()
-    var res = false
-    for (i in 0..< nums.size) {
+    val numsSet = mutableSetOf<Int>()
+    for (i in nums.indices) {
         if (numsSet.contains(nums[i])) {
             return true
         } else {

@@ -1,6 +1,6 @@
 package sorting
 
-fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
+fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int) {
     var resArr = nums1
 
     //Слияние
@@ -9,22 +9,9 @@ fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int): Unit {
     }
 
     //Сортировка
-    fun bubbleSort(arr: IntArray): IntArray {
-        for (i in 0..< arr.size - 1) {
-            for (j in 0..< arr.size - i - 1) {
-                if (arr[j] > arr[j + 1]) {
-                    val temp = arr[j]
-                    arr[j] = arr[j + 1]
-                    arr[j + 1] = temp
-                }
-            }
-        }
-        return arr
-    }
+    resArr.sort()
 
-    resArr = bubbleSort(resArr)
-
-    for (elem in resArr) println(elem) //Вывод результата
+//    for (elem in resArr) println(elem) //Вывод результата
 }
 
 fun main() {

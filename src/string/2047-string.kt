@@ -5,13 +5,11 @@ fun countValidWords(sentence: String): Int {
 
     //Разбиение строки на слова
     val words = sentence.split(Regex(" +"))
-    println(words)
+//    println(words)
 
     for (word in words) {
-        //Проверки до начала перебора самого слова
         if (word.isEmpty()) continue
         var isValid = true
-        val digitsSet = setOf('0','1','2','3','4','5','6','7','8','9')
         val pmSet = setOf('.', ',', '!')
 
         //Если слово состоит из одного знака препинания
@@ -20,15 +18,9 @@ fun countValidWords(sentence: String): Int {
             continue
         }
 
-        //Начинается или заканчивается ли с тире
         val isWordStartsOrEndsWithHyphen = word[0] == '-' || word.last() == '-'
-
-        //Содержит ли цифры
-        val isWordContainsDegits = word.any {it in digitsSet}
-
-        //Содержит ли знаки препинания в конце
+        val isWordContainsDegits = word.any {it.isDigit()}
         val isWordStartsWithPM = word[0] in pmSet
-
         if (isWordStartsOrEndsWithHyphen || isWordContainsDegits || (isWordStartsWithPM && word.isNotEmpty())) continue
 
         var pmCount = 0
@@ -36,7 +28,6 @@ fun countValidWords(sentence: String): Int {
 
         for (i in word.indices) {
             when(word[i]) {
-                //Проверка на знаки пунктуации
                 '.', ',', '!' -> {
                     //Не больше одного знака пункцтуации
                     if (i != word.lastIndex && word.isNotEmpty()) {
@@ -48,10 +39,7 @@ fun countValidWords(sentence: String): Int {
                         break
                     }
                 }
-
-                //Проверка на тире
                 '-' -> {
-                    //Не больше одного тире
                     if (hyphensCount < 1) hyphensCount++ else {
                         isValid = false
                         break
@@ -63,17 +51,14 @@ fun countValidWords(sentence: String): Int {
                         break
                     }
                 }
-
-                //Проверка на цифры
                 '0','1','2','3','4','5','6','7','8','9' -> {
-                    //Цифры недопустимы
                     isValid = false
                     break
                 }
             }
         }
         if (isValid) {
-            println("Valid: $word")
+//            println("Valid: $word")
             res++
         } else {
             continue

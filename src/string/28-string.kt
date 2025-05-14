@@ -10,15 +10,19 @@ fun strStr(haystack: String, needle: String): Int {
         }
         val substr = haystack.substring(i, j) //Получение подстроки
         if (substr == needle) {
-            println("$substr подошел, вхождение = $i")
+//            println("$substr подошел, вхождение = $i")
             res = i
             return res
         }
         else {
-            println("$substr не подошел")
+//            println("$substr не подошел")
             i++
             j = i + needle.length
         }
     }
     return res
+}
+
+fun main() {
+    strStr("sadbutsad", "sad")
 }

@@ -1,7 +1,7 @@
 package sorting
 
 fun maximumTotalSum(maximumHeight: IntArray): Long {
-    var sortedHeight = maximumHeight.sortedDescending().toMutableList() //Сортировка по убыванию
+    val sortedHeight = maximumHeight.sortedDescending().toMutableList() //Сортировка по убыванию
 //    println(sortedHeight)
 
     if (sortedHeight[0] < maximumHeight.size) return -1 //Проверка на количество элементов
